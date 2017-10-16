@@ -1,9 +1,0 @@
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\bin\Debug\CoffeeShop.exe.config
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\bin\Debug\CoffeeShop.exe
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\bin\Debug\CoffeeShop.pdb
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.csprojResolveAssemblyReference.cache
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.MainForm.resources
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.Properties.Resources.resources
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.csproj.GenerateResource.Cache
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.exe
-E:\FPT University\2017-zFall-PRN292\CoffeeShop\trunk\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.pdb
