@@ -1,6 +1,6 @@
 ﻿namespace CoffeeShop
 {
-    partial class StaffForm
+    partial class frmStaff
     {
         /// <summary>
         /// Required designer variable.
@@ -28,324 +28,326 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dgvStaff = new System.Windows.Forms.DataGridView();
+            this.grbInfo = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.MaskedTextBox();
+            this.cmbRole = new System.Windows.Forms.ComboBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
+            this.dtpJoinDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.lbRole = new System.Windows.Forms.Label();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.lbPhone = new System.Windows.Forms.Label();
+            this.lbGender = new System.Windows.Forms.Label();
+            this.lbJoinDate = new System.Windows.Forms.Label();
+            this.lbAddress = new System.Windows.Forms.Label();
+            this.lbBirthday = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
+            this.lbID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.rdFemale = new System.Windows.Forms.RadioButton();
+            this.rdMale = new System.Windows.Forms.RadioButton();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lbSearchValue = new System.Windows.Forms.Label();
+            this.txtSearchValue = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
+            this.grbInfo.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvStaff
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 47);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(395, 398);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStaff.Location = new System.Drawing.Point(12, 47);
+            this.dgvStaff.Name = "dgvStaff";
+            this.dgvStaff.Size = new System.Drawing.Size(395, 453);
+            this.dgvStaff.TabIndex = 0;
             // 
-            // groupBox1
+            // grbInfo
             // 
-            this.groupBox1.Controls.Add(this.maskedTextBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(413, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 433);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Staff Info";
+            this.grbInfo.Controls.Add(this.txtEmail);
+            this.grbInfo.Controls.Add(this.cmbRole);
+            this.grbInfo.Controls.Add(this.txtPhone);
+            this.grbInfo.Controls.Add(this.dtpJoinDate);
+            this.grbInfo.Controls.Add(this.dtpBirthday);
+            this.grbInfo.Controls.Add(this.txtAddress);
+            this.grbInfo.Controls.Add(this.txtName);
+            this.grbInfo.Controls.Add(this.txtID);
+            this.grbInfo.Controls.Add(this.lbRole);
+            this.grbInfo.Controls.Add(this.lbEmail);
+            this.grbInfo.Controls.Add(this.lbPhone);
+            this.grbInfo.Controls.Add(this.lbGender);
+            this.grbInfo.Controls.Add(this.lbJoinDate);
+            this.grbInfo.Controls.Add(this.lbAddress);
+            this.grbInfo.Controls.Add(this.lbBirthday);
+            this.grbInfo.Controls.Add(this.lbName);
+            this.grbInfo.Controls.Add(this.lbID);
+            this.grbInfo.Controls.Add(this.panel1);
+            this.grbInfo.Controls.Add(this.btnDelete);
+            this.grbInfo.Controls.Add(this.btnUpdate);
+            this.grbInfo.Controls.Add(this.btnAdd);
+            this.grbInfo.Location = new System.Drawing.Point(413, 12);
+            this.grbInfo.Name = "grbInfo";
+            this.grbInfo.Size = new System.Drawing.Size(318, 488);
+            this.grbInfo.TabIndex = 1;
+            this.grbInfo.TabStop = false;
+            this.grbInfo.Text = "Staff Info";
             // 
-            // button1
+            // txtEmail
             // 
-            this.button1.Location = new System.Drawing.Point(6, 394);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtEmail.Location = new System.Drawing.Point(112, 365);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(200, 20);
+            this.txtEmail.TabIndex = 21;
             // 
-            // button2
+            // cmbRole
             // 
-            this.button2.Location = new System.Drawing.Point(122, 394);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cmbRole.FormattingEnabled = true;
+            this.cmbRole.Location = new System.Drawing.Point(112, 409);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.Size = new System.Drawing.Size(121, 21);
+            this.cmbRole.TabIndex = 20;
             // 
-            // button3
+            // txtPhone
             // 
-            this.button3.Location = new System.Drawing.Point(237, 394);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.txtPhone.Location = new System.Drawing.Point(112, 314);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(170, 20);
+            this.txtPhone.TabIndex = 17;
+            // 
+            // dtpJoinDate
+            // 
+            this.dtpJoinDate.Location = new System.Drawing.Point(112, 212);
+            this.dtpJoinDate.Name = "dtpJoinDate";
+            this.dtpJoinDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpJoinDate.TabIndex = 19;
+            // 
+            // dtpBirthday
+            // 
+            this.dtpBirthday.Location = new System.Drawing.Point(112, 119);
+            this.dtpBirthday.Name = "dtpBirthday";
+            this.dtpBirthday.Size = new System.Drawing.Size(200, 20);
+            this.dtpBirthday.TabIndex = 18;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(112, 168);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(200, 20);
+            this.txtAddress.TabIndex = 16;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(112, 73);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(200, 20);
+            this.txtName.TabIndex = 14;
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(112, 30);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(58, 20);
+            this.txtID.TabIndex = 13;
+            // 
+            // lbRole
+            // 
+            this.lbRole.AutoSize = true;
+            this.lbRole.Location = new System.Drawing.Point(35, 412);
+            this.lbRole.Name = "lbRole";
+            this.lbRole.Size = new System.Drawing.Size(29, 13);
+            this.lbRole.TabIndex = 12;
+            this.lbRole.Text = "Role";
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Location = new System.Drawing.Point(35, 368);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(32, 13);
+            this.lbEmail.TabIndex = 11;
+            this.lbEmail.Text = "Email";
+            // 
+            // lbPhone
+            // 
+            this.lbPhone.AutoSize = true;
+            this.lbPhone.Location = new System.Drawing.Point(35, 317);
+            this.lbPhone.Name = "lbPhone";
+            this.lbPhone.Size = new System.Drawing.Size(38, 13);
+            this.lbPhone.TabIndex = 10;
+            this.lbPhone.Text = "Phone";
+            // 
+            // lbGender
+            // 
+            this.lbGender.AutoSize = true;
+            this.lbGender.Location = new System.Drawing.Point(35, 268);
+            this.lbGender.Name = "lbGender";
+            this.lbGender.Size = new System.Drawing.Size(42, 13);
+            this.lbGender.TabIndex = 9;
+            this.lbGender.Text = "Gender";
+            // 
+            // lbJoinDate
+            // 
+            this.lbJoinDate.AutoSize = true;
+            this.lbJoinDate.Location = new System.Drawing.Point(35, 218);
+            this.lbJoinDate.Name = "lbJoinDate";
+            this.lbJoinDate.Size = new System.Drawing.Size(52, 13);
+            this.lbJoinDate.TabIndex = 8;
+            this.lbJoinDate.Text = "Join Date";
+            // 
+            // lbAddress
+            // 
+            this.lbAddress.AutoSize = true;
+            this.lbAddress.Location = new System.Drawing.Point(36, 171);
+            this.lbAddress.Name = "lbAddress";
+            this.lbAddress.Size = new System.Drawing.Size(45, 13);
+            this.lbAddress.TabIndex = 7;
+            this.lbAddress.Text = "Address";
+            // 
+            // lbBirthday
+            // 
+            this.lbBirthday.AutoSize = true;
+            this.lbBirthday.Location = new System.Drawing.Point(35, 125);
+            this.lbBirthday.Name = "lbBirthday";
+            this.lbBirthday.Size = new System.Drawing.Size(45, 13);
+            this.lbBirthday.TabIndex = 6;
+            this.lbBirthday.Text = "Birthday";
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(35, 76);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(35, 13);
+            this.lbName.TabIndex = 5;
+            this.lbName.Text = "Name";
+            // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(35, 33);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(18, 13);
+            this.lbID.TabIndex = 4;
+            this.lbID.Text = "ID";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Location = new System.Drawing.Point(112, 235);
+            this.panel1.Controls.Add(this.rdFemale);
+            this.panel1.Controls.Add(this.rdMale);
+            this.panel1.Location = new System.Drawing.Point(112, 252);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 29);
             this.panel1.TabIndex = 3;
             // 
-            // radioButton1
+            // rdFemale
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(10, 6);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(48, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Male";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdFemale.AutoSize = true;
+            this.rdFemale.Location = new System.Drawing.Point(111, 4);
+            this.rdFemale.Name = "rdFemale";
+            this.rdFemale.Size = new System.Drawing.Size(59, 17);
+            this.rdFemale.TabIndex = 1;
+            this.rdFemale.TabStop = true;
+            this.rdFemale.Text = "Female";
+            this.rdFemale.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdMale
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(111, 4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(59, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Female";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdMale.AutoSize = true;
+            this.rdMale.Checked = true;
+            this.rdMale.Location = new System.Drawing.Point(10, 6);
+            this.rdMale.Name = "rdMale";
+            this.rdMale.Size = new System.Drawing.Size(48, 17);
+            this.rdMale.TabIndex = 0;
+            this.rdMale.TabStop = true;
+            this.rdMale.Text = "Male";
+            this.rdMale.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // btnDelete
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "ID";
+            this.btnDelete.Location = new System.Drawing.Point(237, 459);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // btnUpdate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Name";
+            this.btnUpdate.Location = new System.Drawing.Point(122, 459);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // btnAdd
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Birthday";
+            this.btnAdd.Location = new System.Drawing.Point(5, 459);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // lbSearchValue
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Address";
+            this.lbSearchValue.AutoSize = true;
+            this.lbSearchValue.Location = new System.Drawing.Point(3, 0);
+            this.lbSearchValue.Name = "lbSearchValue";
+            this.lbSearchValue.Size = new System.Drawing.Size(35, 13);
+            this.lbSearchValue.TabIndex = 2;
+            this.lbSearchValue.Text = "Name";
             // 
-            // label5
+            // txtSearchValue
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 198);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Join Date";
+            this.txtSearchValue.Location = new System.Drawing.Point(44, 3);
+            this.txtSearchValue.Name = "txtSearchValue";
+            this.txtSearchValue.Size = new System.Drawing.Size(257, 20);
+            this.txtSearchValue.TabIndex = 3;
             // 
-            // label6
+            // btnSearch
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 241);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Gender";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 282);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Phone";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(35, 318);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Email";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(35, 359);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Role";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(112, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(58, 20);
-            this.textBox1.TabIndex = 13;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(112, 69);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(112, 155);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 20);
-            this.textBox4.TabIndex = 16;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(112, 279);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(170, 20);
-            this.maskedTextBox1.TabIndex = 17;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(112, 108);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 18;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(112, 192);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 19;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(112, 356);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 20;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Name";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(44, 3);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(257, 20);
-            this.textBox5.TabIndex = 3;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(307, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Search";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(307, 3);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.label10);
-            this.flowLayoutPanel1.Controls.Add(this.textBox5);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.Controls.Add(this.lbSearchValue);
+            this.flowLayoutPanel1.Controls.Add(this.txtSearchValue);
+            this.flowLayoutPanel1.Controls.Add(this.btnSearch);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(395, 29);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(112, 315);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(200, 20);
-            this.maskedTextBox2.TabIndex = 21;
-            // 
-            // StaffForm
+            // frmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 457);
+            this.ClientSize = new System.Drawing.Size(734, 512);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "StaffForm";
+            this.Controls.Add(this.grbInfo);
+            this.Controls.Add(this.dgvStaff);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "frmStaff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
+            this.grbInfo.ResumeLayout(false);
+            this.grbInfo.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -356,34 +358,34 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvStaff;
+        private System.Windows.Forms.GroupBox grbInfo;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lbRole;
+        private System.Windows.Forms.Label lbEmail;
+        private System.Windows.Forms.Label lbPhone;
+        private System.Windows.Forms.Label lbGender;
+        private System.Windows.Forms.Label lbJoinDate;
+        private System.Windows.Forms.Label lbAddress;
+        private System.Windows.Forms.Label lbBirthday;
+        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.RadioButton rdFemale;
+        private System.Windows.Forms.RadioButton rdMale;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DateTimePicker dtpJoinDate;
+        private System.Windows.Forms.DateTimePicker dtpBirthday;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
+        private System.Windows.Forms.ComboBox cmbRole;
+        private System.Windows.Forms.Label lbSearchValue;
+        private System.Windows.Forms.TextBox txtSearchValue;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox txtEmail;
     }
 }
