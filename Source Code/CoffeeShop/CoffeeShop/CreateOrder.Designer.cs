@@ -58,6 +58,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.btnDiscard = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -82,9 +83,13 @@
             // 
             this.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategory.Location = new System.Drawing.Point(6, 19);
+            this.dgvCategory.MultiSelect = false;
             this.dgvCategory.Name = "dgvCategory";
+            this.dgvCategory.ReadOnly = true;
+            this.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategory.Size = new System.Drawing.Size(124, 198);
             this.dgvCategory.TabIndex = 0;
+            this.dgvCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategory_CellClick);
             // 
             // groupBox2
             // 
@@ -100,9 +105,13 @@
             // 
             this.dgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMenu.Location = new System.Drawing.Point(6, 19);
+            this.dgvMenu.MultiSelect = false;
             this.dgvMenu.Name = "dgvMenu";
+            this.dgvMenu.ReadOnly = true;
+            this.dgvMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMenu.Size = new System.Drawing.Size(287, 198);
             this.dgvMenu.TabIndex = 0;
+            this.dgvMenu.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMenu_CellMouseDoubleClick);
             // 
             // groupBox3
             // 
@@ -218,14 +227,19 @@
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Order";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // dgvOrderDetail
             // 
             this.dgvOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderDetail.Location = new System.Drawing.Point(6, 19);
+            this.dgvOrderDetail.MultiSelect = false;
             this.dgvOrderDetail.Name = "dgvOrderDetail";
+            this.dgvOrderDetail.ReadOnly = true;
+            this.dgvOrderDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrderDetail.Size = new System.Drawing.Size(429, 223);
             this.dgvOrderDetail.TabIndex = 0;
+            this.dgvOrderDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderDetail_CellClick);
             // 
             // groupBox5
             // 
@@ -254,15 +268,17 @@
             this.btnRemove.TabIndex = 10;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(19, 155);
+            this.btnUpdate.Location = new System.Drawing.Point(14, 155);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(62, 23);
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // lbTotalPrice
             // 
@@ -336,9 +352,9 @@
             // 
             // btnCheckOut
             // 
-            this.btnCheckOut.Location = new System.Drawing.Point(479, 420);
+            this.btnCheckOut.Location = new System.Drawing.Point(552, 420);
             this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(160, 73);
+            this.btnCheckOut.Size = new System.Drawing.Size(94, 73);
             this.btnCheckOut.TabIndex = 5;
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
@@ -353,11 +369,21 @@
             this.btnDiscard.Text = "Discard";
             this.btnDiscard.UseVisualStyleBackColor = true;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(479, 420);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(63, 73);
+            this.btnRefresh.TabIndex = 11;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
             // CreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 511);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDiscard);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.groupBox5);
@@ -368,6 +394,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CreateOrder";
             this.Text = "The Coffee House";
+            this.Load += new System.EventHandler(this.CreateOrder_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -414,5 +441,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.Button btnDiscard;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
