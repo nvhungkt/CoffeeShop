@@ -19,7 +19,7 @@ namespace CoffeeShop
         private int role;
         SqlDataAdapter dAdapt;
         DataSet myDS = new DataSet();
-        private readonly string connStr = ConfigurationManager.ConnectionStrings["SqlProvider"].ConnectionString;
+        private readonly string connStr = ConfigurationManager.ConnectionStrings["SqlProviderPubs"].ConnectionString;
         public frmStaff(int id, int role)
         {
             InitializeComponent();
