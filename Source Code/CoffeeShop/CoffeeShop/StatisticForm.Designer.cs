@@ -103,6 +103,7 @@
             this.btnReverse.TabIndex = 5;
             this.btnReverse.Text = "Reverse";
             this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
             // 
             // btnShowPopularMenuItem
             // 
@@ -112,6 +113,7 @@
             this.btnShowPopularMenuItem.TabIndex = 6;
             this.btnShowPopularMenuItem.Text = "Show popular menu item";
             this.btnShowPopularMenuItem.UseVisualStyleBackColor = true;
+            this.btnShowPopularMenuItem.Click += new System.EventHandler(this.btnShowPopularMenuItem_Click);
             // 
             // btnShowBenefit
             // 
@@ -121,6 +123,7 @@
             this.btnShowBenefit.TabIndex = 7;
             this.btnShowBenefit.Text = "Show benefits";
             this.btnShowBenefit.UseVisualStyleBackColor = true;
+            this.btnShowBenefit.Click += new System.EventHandler(this.btnShowBenefit_Click);
             // 
             // btnShowTotalOrders
             // 
@@ -130,6 +133,7 @@
             this.btnShowTotalOrders.TabIndex = 8;
             this.btnShowTotalOrders.Text = "Show total orders";
             this.btnShowTotalOrders.UseVisualStyleBackColor = true;
+            this.btnShowTotalOrders.Click += new System.EventHandler(this.btnShowTotalOrders_Click);
             // 
             // label4
             // 
