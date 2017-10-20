@@ -57,8 +57,7 @@
             this.lbItemName = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnCheckOut = new System.Windows.Forms.Button();
-            this.btnDiscard = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnNewOrder = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -178,9 +177,8 @@
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Location = new System.Drawing.Point(76, 31);
             this.lbStaffName.Name = "lbStaffName";
-            this.lbStaffName.Size = new System.Drawing.Size(35, 13);
+            this.lbStaffName.Size = new System.Drawing.Size(0, 13);
             this.lbStaffName.TabIndex = 4;
-            this.lbStaffName.Text = "label5";
             // 
             // label4
             // 
@@ -354,37 +352,28 @@
             // 
             this.btnCheckOut.Location = new System.Drawing.Point(552, 420);
             this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(94, 73);
+            this.btnCheckOut.Size = new System.Drawing.Size(170, 73);
             this.btnCheckOut.TabIndex = 5;
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
-            this.btnCheckOut.Click += new System.EventHandler(this.button4_Click);
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
-            // btnDiscard
+            // btnNewOrder
             // 
-            this.btnDiscard.Location = new System.Drawing.Point(658, 420);
-            this.btnDiscard.Name = "btnDiscard";
-            this.btnDiscard.Size = new System.Drawing.Size(64, 73);
-            this.btnDiscard.TabIndex = 6;
-            this.btnDiscard.Text = "Discard";
-            this.btnDiscard.UseVisualStyleBackColor = true;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(479, 420);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(63, 73);
-            this.btnRefresh.TabIndex = 11;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnNewOrder.Location = new System.Drawing.Point(479, 420);
+            this.btnNewOrder.Name = "btnNewOrder";
+            this.btnNewOrder.Size = new System.Drawing.Size(63, 73);
+            this.btnNewOrder.TabIndex = 11;
+            this.btnNewOrder.Text = "New Order";
+            this.btnNewOrder.UseVisualStyleBackColor = true;
+            this.btnNewOrder.Click += new System.EventHandler(this.btnNewOrder_Click);
             // 
             // CreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 511);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnDiscard);
+            this.Controls.Add(this.btnNewOrder);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -440,7 +429,6 @@
         private System.Windows.Forms.Label lbItemName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCheckOut;
-        private System.Windows.Forms.Button btnDiscard;
-        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnNewOrder;
     }
 }

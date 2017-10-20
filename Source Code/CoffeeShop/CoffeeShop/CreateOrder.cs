@@ -22,6 +22,8 @@ namespace CoffeeShop
 
         private Dictionary<DataRow, int> detail;
 
+        private string date, time;
+
         private void PrepareOrder()
         {
             daOrder = new SqlDataAdapter("SELECT * FROM [Order]", conn);
@@ -29,11 +31,82 @@ namespace CoffeeShop
 
             daOrder.Fill(ds, "Order");
 
+            //prepare Order view
             lbDate.Text = DateTime.Now.ToLocalTime().ToString();
             lbOrderPrice.Text = "0";
         }
 
         private void PrepareOrderDetail()
+        {
+            daOrderDetail = new SqlDataAdapter("SELECT * FROM OrderDetail", conn);
+            SqlCommandBuilder builder = new SqlCommandBuilder(daOrderDetail);
+
+            daOrderDetail.Fill(ds, "OrderDetail");
+
+            //prepare Order Detail view
+            FormFillSelectedOrderDetail();
+        }
+
+        private void InsertDBOrder()
+        {
+            DateTime dt = new DateTime(DateTime.Now.Ticks);
+            date = dt.ToString("dd-MM-yyyy");
+            time = dt.ToString("hh:mm:ss");
+
+            DataRow newRow = ds.Tables["Order"].NewRow();
+
+            newRow["customerName"] = (txtCustomerName.Text.Equals("") ? "KHACH HANG" : txtCustomerName.Text);
+            newRow["staffID"] = 1;
+            newRow["takenDate"] = DateTime.Parse(date);
+            newRow["takenTime"] = TimeSpan.Parse(time);
+            if (txtTableNumber.Text.Equals(""))
+                newRow["tableNumber"] = DBNull.Value;
+            else
+                newRow["tableNumber"] = int.Parse(txtTableNumber.Text);
+            newRow["totalPrice"] = float.Parse(lbOrderPrice.Text);
+            newRow["status"] = "paid";
+
+            try
+            {
+                ds.Tables["Order"].Rows.Add(newRow);
+                daOrder.Update(ds.Tables["Order"]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void InsertDBOrderDetails()
+        {
+            //Reupdate the dataset
+            daOrder.Fill(ds, "Order");
+            //get the latest order ID (which has just been inserted)
+            int lastRow = ds.Tables["Order"].Rows.Count - 1;
+            int orderID = int.Parse(ds.Tables["Order"].Rows[lastRow]["id"].ToString());
+
+            foreach (var entry in detail)
+            {
+                DataRow newRow = ds.Tables["OrderDetail"].NewRow();
+
+                newRow["orderID"] = orderID;
+                newRow["productID"] = entry.Key["id"];
+                newRow["quantity"] = entry.Value;
+                newRow["price"] = entry.Key["price"];
+
+                try
+                {
+                    ds.Tables["OrderDetail"].Rows.Add(newRow);
+                    daOrderDetail.Update(ds.Tables["OrderDetail"]);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void InitPseudoDetailGridView()
         {
             DataTable detail = new DataTable("Detail");
 
@@ -118,19 +191,23 @@ namespace CoffeeShop
             {
                 int quantity = int.Parse(txtQuantity.Text);
                 if (quantity <= 0)
+                {
                     detail.Remove(row);
+                }
                 else
                 {
                     detail[row] = quantity;
                 }
             }
 
-            ReloadOrderDetailsTable();
+            UpdateOrderDetailView();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             DataRow row = null;
+
+            //Find out the row that has productName matches the itemName label
             foreach (var entry in detail)
             {
                 if (entry.Key["name"].Equals(lbItemName.Text))
@@ -140,19 +217,22 @@ namespace CoffeeShop
                 }
             }
 
+            //If the was a row then remove it from the Dictionary<> @detail
             if (row != null)
             {
                 detail.Remove(row);
-                lbItemName.Text = "";
-                lbItemPrice.Text = "";
-                lbTotalPrice.Text = "";
-                txtQuantity.Text = "";
             }
-                
-            ReloadOrderDetailsTable();
+
+            //reload view
+            UpdateOrderDetailView();
         }
 
         private void dgvOrderDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FormFillSelectedOrderDetail();
+        }
+
+        private void FormFillSelectedOrderDetail()
         {
             if (dgvOrderDetail.SelectedCells.Count > 0)
             {
@@ -161,6 +241,13 @@ namespace CoffeeShop
                 lbItemPrice.Text = dgvOrderDetail.Rows[row].Cells["Unit Price"].Value.ToString();
                 lbTotalPrice.Text = dgvOrderDetail.Rows[row].Cells["Price"].Value.ToString();
                 txtQuantity.Text = dgvOrderDetail.Rows[row].Cells["Quantity"].Value.ToString();
+            }
+            else if (dgvOrderDetail.SelectedRows.Count == 0)
+            {
+                lbItemName.Text = "";
+                lbItemPrice.Text = "";
+                lbTotalPrice.Text = "";
+                txtQuantity.Text = "";
             }
         }
 
@@ -192,14 +279,59 @@ namespace CoffeeShop
             DataRow selectedRow = ((DataRowView)dgvMenu.Rows[e.RowIndex].DataBoundItem).Row;
 
             //To check if item is already added in to wishlist
-            if (detail.ContainsKey(selectedRow))
-                detail[selectedRow] += int.Parse(quantity);
-            else
+            bool pass = false;
+            foreach (var entry in detail)
+            {
+                if (entry.Key["name"].Equals(selectedRow["name"]))
+                {
+                    detail[entry.Key] += int.Parse(quantity);
+                    pass = true;
+                    break;
+                }
+            }
+            if (!pass)
                 detail.Add(selectedRow, int.Parse(quantity));
-            ReloadOrderDetailsTable();
+
+            UpdateOrderDetailView();
         }
 
-        private void ReloadOrderDetailsTable()
+        private void btnNewOrder_Click(object sender, EventArgs e)
+        {
+            if (detail.Count > 0)
+            {
+                if (MessageBox.Show("There is a current order not yet processed, are you sure to cancel anyway it?", "WARNING", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            detail.Clear();
+            ds.Tables["Detail"].Rows.Clear();
+            dgvOrderDetail.DataSource = ds.Tables["Detail"];
+            UpdateOrderDetailView();
+
+            txtCustomerName.Text = "";
+            txtTableNumber.Text = "";
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            if (detail.Count == 0)
+                return;
+            InsertDBOrder();
+            InsertDBOrderDetails();
+
+            MessageBox.Show("Order is printing...", "SUCCESS!!", MessageBoxButtons.OK);
+            detail.Clear();
+            btnNewOrder_Click(null, null);
+        }
+
+        private void UpdateOrderDetailView()
+        {
+            ReloadOrderDetailDataGridView();
+            FormFillSelectedOrderDetail();
+        }
+
+        private void ReloadOrderDetailDataGridView()
         {
             //Clear to reset the "No." column, by @count = 1
             ds.Tables["Detail"].Rows.Clear();
@@ -228,6 +360,7 @@ namespace CoffeeShop
             LoadMenu();
             PrepareOrder();
             PrepareOrderDetail();
+            InitPseudoDetailGridView();
         }
     }
 }
