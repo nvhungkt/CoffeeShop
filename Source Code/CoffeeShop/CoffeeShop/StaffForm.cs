@@ -252,14 +252,12 @@ namespace CoffeeShop
                 //Update to DB
                 dAdapt.Update(myDS.Tables["Staff"]);
                 //Reload form
-                //myDS.Reset();
-                //InitRoleDataSet();
-                //LoadDataOnCombobox();
-                //InitStaffDataSet();
-                //LoadData();
-                myDS.Clear();
+                myDS.Reset();
+                InitRoleDataSet();
+                LoadDataOnCombobox();
                 InitStaffDataSet();
                 LoadData();
+                changeNotIsActiveRowColor();
             }
             catch (SqlException se)
             {    
