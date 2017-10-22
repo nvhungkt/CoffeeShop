@@ -93,8 +93,8 @@ namespace CoffeeShop
             DateTime dateTo = dtpTo.Value;
             string dFrom = string.Format("{0}-{1}-{2}", dateFrom.Year, dateFrom.Month, dateFrom.Day);
             string dTo = string.Format("{0}-{1}-{2}", dateTo.Year, dateTo.Month, dateTo.Day);
-            string queryOrderStay = "select count(o.id) as Quanity from[Order] o where o.tableNumber is not Null and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
-            string queryOrderLeave = "select count(o.id) as Quanity from[Order] o where o.tableNumber is Null and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
+            string queryOrderStay = "select count(o.id) as OrderQuanity from[Order] o where o.tableNumber is not Null and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
+            string queryOrderLeave = "select count(o.id) as OrderQuanity from[Order] o where o.tableNumber is Null and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
             string sql = queryOrderStay + " union all " + queryOrderLeave;
             dAdapt = new SqlDataAdapter(sql, connStr);
             SqlCommandBuilder builder = new SqlCommandBuilder(dAdapt);
@@ -115,10 +115,10 @@ namespace CoffeeShop
                     string value;
                     if(index == 0)
                     {
-                        value = "Leaving";
+                        value = "Stay";
                     } else
                     {
-                        value = "Stay";
+                        value = "Leaving";
                     }
                     row["Order Type"] = value;
                     index++;
@@ -188,7 +188,10 @@ namespace CoffeeShop
 
         private void StatisticForm_Load(object sender, EventArgs e)
         {
-
+            dtpFrom.Format = DateTimePickerFormat.Custom;
+            dtpFrom.CustomFormat = "dd/MM/yyyy";
+            dtpTo.Format = DateTimePickerFormat.Custom;
+            dtpTo.CustomFormat = "dd/MM/yyyy";
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -216,7 +219,9 @@ namespace CoffeeShop
 
         private void btnReverse_Click(object sender, EventArgs e)
         {
-            Reverse();
+            if (dgvOrderStatistic.RowCount > 0) {
+                Reverse();
+            }
         }
     }
 }

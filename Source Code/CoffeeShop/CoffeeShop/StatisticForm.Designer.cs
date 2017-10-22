@@ -62,6 +62,7 @@
             // 
             // dtpFrom
             // 
+            this.dtpFrom.CustomFormat = "dd/MM/yyyy";
             this.dtpFrom.Location = new System.Drawing.Point(539, 99);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(183, 20);

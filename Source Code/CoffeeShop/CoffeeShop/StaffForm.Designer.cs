@@ -180,7 +180,9 @@
             // 
             // dtpJoinDate
             // 
-            this.dtpJoinDate.Location = new System.Drawing.Point(130, 253);
+            this.dtpJoinDate.Location = new System.Drawing.Point(130, 253)
+            this.dtpJoinDate.CustomFormat = "dd/MM//yyyy";
+            this.dtpJoinDate.Location = new System.Drawing.Point(112, 212);
             this.dtpJoinDate.Name = "dtpJoinDate";
             this.dtpJoinDate.Size = new System.Drawing.Size(170, 20);
             this.dtpJoinDate.TabIndex = 2;
@@ -188,6 +190,8 @@
             // dtpBirthday
             // 
             this.dtpBirthday.Location = new System.Drawing.Point(130, 179);
+            this.dtpBirthday.CustomFormat = "dd/MM//yyyy";
+            this.dtpBirthday.Location = new System.Drawing.Point(112, 119);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(170, 20);
             this.dtpBirthday.TabIndex = 1;
