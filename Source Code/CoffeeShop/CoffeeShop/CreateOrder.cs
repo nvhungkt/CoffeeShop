@@ -10,11 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using System.Text.RegularExpressions;
 
 namespace CoffeeShop
 {
     public partial class CreateOrder : Form
     {
+        private string staffName;
+        private int staffID;
+
         private string conStr = ConfigurationManager.ConnectionStrings["SqlProviderPubs"].ConnectionString;
         private SqlConnection conn;
         private DataSet ds = new DataSet();
@@ -23,6 +27,8 @@ namespace CoffeeShop
         private Dictionary<DataRow, int> detail;
 
         private string date, time;
+
+        private Regex intReg = new Regex("^[0-9]+$"), floatReg = new Regex("^[0-9]+.[0-9]+");
 
         private void PrepareOrder()
         {
@@ -56,7 +62,7 @@ namespace CoffeeShop
             DataRow newRow = ds.Tables["Order"].NewRow();
 
             newRow["customerName"] = (txtCustomerName.Text.Equals("") ? "KHACH HANG" : txtCustomerName.Text);
-            newRow["staffID"] = 1;
+            newRow["staffID"] = staffID;
             newRow["takenDate"] = DateTime.Parse(date);
             newRow["takenTime"] = TimeSpan.Parse(time);
             if (txtTableNumber.Text.Equals(""))
@@ -151,9 +157,13 @@ namespace CoffeeShop
             daMenu.Fill(ds, "Menu");
         }
 
-        public CreateOrder()
+        public CreateOrder(string staffName, int staffID)
         {
             InitializeComponent();
+
+            this.staffName = staffName;
+            lbStaffName.Text = staffName;
+            this.staffID = staffID;
 
             conn = new SqlConnection(conStr);
 
@@ -276,6 +286,9 @@ namespace CoffeeShop
         {
             string quantity = Interaction.InputBox("Quantity = ?", dgvMenu.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "", "1");
 
+            if (quantity.Equals("") || !intReg.IsMatch(quantity) || int.Parse(quantity) == 0)
+                return;
+
             DataRow selectedRow = ((DataRowView)dgvMenu.Rows[e.RowIndex].DataBoundItem).Row;
 
             //To check if item is already added in to wishlist
@@ -293,6 +306,24 @@ namespace CoffeeShop
                 detail.Add(selectedRow, int.Parse(quantity));
 
             UpdateOrderDetailView();
+        }
+
+        private void txtTableNumber_TextChanged(object sender, EventArgs e)
+        {
+            if ((!intReg.IsMatch(txtTableNumber.Text) && !txtTableNumber.Text.Trim().Equals("")) || (intReg.IsMatch(txtTableNumber.Text) && int.Parse(txtTableNumber.Text) > 30))
+            {
+                MessageBox.Show("Table range: 1-30", "Warning");
+                txtTableNumber.Text = "1";
+            }
+        }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (!intReg.IsMatch(txtQuantity.Text) && !lbItemName.Text.Equals(""))
+            {
+                MessageBox.Show("Quantity must be a valid number", "Warning");
+                txtQuantity.Text = "1";
+            }
         }
 
         private void btnNewOrder_Click(object sender, EventArgs e)

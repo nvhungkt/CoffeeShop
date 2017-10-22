@@ -14,9 +14,12 @@ namespace CoffeeShop
 {
     public partial class LoginForm : Form
     {
-        SqlDataAdapter dAdapt;
-        DataSet myDS = new DataSet();
-        private readonly string connStr = ConfigurationManager.ConnectionStrings["SqlProviderPubs"].ConnectionString;
+        
+
+        public delegate bool CheckLogin(string username, string password);
+
+        public event CheckLogin checkLogin;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -29,10 +32,27 @@ namespace CoffeeShop
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "admin" && txtPassword.Text == "123")
-            {
+            if (checkLogin(txtUsername.Text, txtPassword.Text))
                 this.Close();
-            }
+            else
+                MessageBox.Show("Invalid username or password!!");
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt)
+                MessageBox.Show("Alt is prohibit!!");
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt)
+                MessageBox.Show("Alt is prohibit!!");
         }
     }
 }

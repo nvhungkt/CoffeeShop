@@ -180,7 +180,7 @@
             // 
             // dtpJoinDate
             // 
-            this.dtpJoinDate.Location = new System.Drawing.Point(130, 253)
+            this.dtpJoinDate.Location = new System.Drawing.Point(130, 253);
             this.dtpJoinDate.CustomFormat = "dd/MM//yyyy";
             this.dtpJoinDate.Location = new System.Drawing.Point(112, 212);
             this.dtpJoinDate.Name = "dtpJoinDate";
