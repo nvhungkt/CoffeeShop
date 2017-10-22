@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvMenu = new System.Windows.Forms.DataGridView();
             this.dgvCategory = new System.Windows.Forms.DataGridView();
             this.groupContent = new System.Windows.Forms.GroupBox();
@@ -44,11 +45,13 @@
             this.lbName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             this.groupContent.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvMenu
@@ -58,6 +61,7 @@
             this.dgvMenu.Name = "dgvMenu";
             this.dgvMenu.Size = new System.Drawing.Size(392, 462);
             this.dgvMenu.TabIndex = 0;
+            this.dgvMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMenu_CellClick);
             // 
             // dgvCategory
             // 
@@ -66,6 +70,7 @@
             this.dgvCategory.Name = "dgvCategory";
             this.dgvCategory.Size = new System.Drawing.Size(288, 162);
             this.dgvCategory.TabIndex = 1;
+            this.dgvCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategory_CellClick);
             // 
             // groupContent
             // 
@@ -86,6 +91,7 @@
             this.groupContent.TabIndex = 2;
             this.groupContent.TabStop = false;
             this.groupContent.Text = "MealDetails";
+            this.groupContent.Visible = false;
             // 
             // btnUpdate
             // 
@@ -95,6 +101,7 @@
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDeactive
             // 
@@ -104,6 +111,7 @@
             this.btnDeactive.TabIndex = 9;
             this.btnDeactive.Text = "Deactive";
             this.btnDeactive.UseVisualStyleBackColor = true;
+            this.btnDeactive.Click += new System.EventHandler(this.btnDeactive_Click);
             // 
             // btnAddNew
             // 
@@ -111,15 +119,16 @@
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(75, 23);
             this.btnAddNew.TabIndex = 8;
-            this.btnAddNew.Text = "Add New";
+            this.btnAddNew.Text = "New";
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // lbModifiedTime
             // 
             this.lbModifiedTime.AutoSize = true;
             this.lbModifiedTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbModifiedTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbModifiedTime.Location = new System.Drawing.Point(80, 220);
+            this.lbModifiedTime.Location = new System.Drawing.Point(77, 222);
             this.lbModifiedTime.Name = "lbModifiedTime";
             this.lbModifiedTime.Size = new System.Drawing.Size(80, 13);
             this.lbModifiedTime.TabIndex = 7;
@@ -204,6 +213,10 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Category";
             // 
+            // error
+            // 
+            this.error.ContainerControl = this;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,12 +229,14 @@
             this.MaximizeBox = false;
             this.Name = "MenuForm";
             this.Text = "MenuForm";
+            this.Load += new System.EventHandler(this.MenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).EndInit();
             this.groupContent.ResumeLayout(false);
             this.groupContent.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,5 +259,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDeactive;
         private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.ErrorProvider error;
     }
 }
