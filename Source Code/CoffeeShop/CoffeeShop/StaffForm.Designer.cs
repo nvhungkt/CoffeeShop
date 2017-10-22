@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.grbInfo = new System.Windows.Forms.GroupBox();
             this.txtConfirm = new System.Windows.Forms.TextBox();
@@ -76,8 +76,8 @@
             this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStaff.Location = new System.Drawing.Point(12, 47);
             this.dgvStaff.Name = "dgvStaff";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.dgvStaff.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            this.dgvStaff.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvStaff.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgvStaff.Size = new System.Drawing.Size(395, 453);
             this.dgvStaff.TabIndex = 0;
@@ -163,6 +163,7 @@
             // 
             // cmbRole
             // 
+            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRole.FormattingEnabled = true;
             this.cmbRole.Location = new System.Drawing.Point(130, 407);
             this.cmbRole.Name = "cmbRole";
@@ -182,14 +183,14 @@
             this.dtpJoinDate.Location = new System.Drawing.Point(130, 253);
             this.dtpJoinDate.Name = "dtpJoinDate";
             this.dtpJoinDate.Size = new System.Drawing.Size(170, 20);
-            this.dtpJoinDate.TabIndex = 18;
+            this.dtpJoinDate.TabIndex = 2;
             // 
             // dtpBirthday
             // 
             this.dtpBirthday.Location = new System.Drawing.Point(130, 179);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(170, 20);
-            this.dtpBirthday.TabIndex = 16;
+            this.dtpBirthday.TabIndex = 1;
             // 
             // txtAddress
             // 
