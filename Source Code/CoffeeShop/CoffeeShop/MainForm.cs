@@ -137,6 +137,8 @@ namespace CoffeeShop
 
         private void itmLogout_Click(object sender, EventArgs e)
         {
+            if (!CloseCurrentTabs())
+                return;
             DisableMenuBar();
             LoginForm frm = new LoginForm();
             frm.checkLogin += CheckLogin;
@@ -147,6 +149,8 @@ namespace CoffeeShop
 
         private void itmLogin_Click(object sender, EventArgs e)
         {
+            if (!CloseCurrentTabs())
+                return;
             DisableMenuBar();
             LoginForm frm = new LoginForm();
             frm.checkLogin += CheckLogin;

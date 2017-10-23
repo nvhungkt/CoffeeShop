@@ -28,7 +28,7 @@ namespace CoffeeShop
             string dTo = string.Format("{0}-{1}-{2}", dateTo.Year, dateTo.Month, dateTo.Day);
             string queryPopularEachItem = "select p.id, count(p.id) popular \n"
                            + "from Product p, OrderDetail o, [Order] ord \n"
-                           + "where p.id = o.productID and o.orderID = ord.id and ord.takenDate >= '" + dateFrom + "' and ord.takenDate <= '" + dateTo + "' and ord.status = 'paid'\n"
+                           + "where p.id = o.productID and o.orderID = ord.id and ord.takenDate >= '" + dFrom + "' and ord.takenDate <= '" + dTo + "' and ord.status = 'paid'\n"
                            + "group by p.id \n";
             string sql = "select pr.name, pr.description, pr.categoryID, pr.price, f.popular \n"
                 + "from (" + queryPopularEachItem + ") f, Product pr \n"
@@ -93,8 +93,8 @@ namespace CoffeeShop
             DateTime dateTo = dtpTo.Value;
             string dFrom = string.Format("{0}-{1}-{2}", dateFrom.Year, dateFrom.Month, dateFrom.Day);
             string dTo = string.Format("{0}-{1}-{2}", dateTo.Year, dateTo.Month, dateTo.Day);
-            string queryOrderStay = "select count(o.id) as OrderQuanity from[Order] o where o.tableNumber is not Null and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
-            string queryOrderLeave = "select count(o.id) as OrderQuanity from[Order] o where o.tableNumber is Null and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
+            string queryOrderStay = "select count(o.id) as OrderQuanity from[Order] o where o.tableNumber is not Null and o.takenDate >= '" + dFrom + "' and o.takenDate <= '" + dTo + "'";
+            string queryOrderLeave = "select count(o.id) as OrderQuanity from[Order] o where o.tableNumber is Null and o.takenDate >= '" + dFrom + "' and o.takenDate <= '" + dTo + "'";
             string sql = queryOrderStay + " union all " + queryOrderLeave;
             dAdapt = new SqlDataAdapter(sql, connStr);
             SqlCommandBuilder builder = new SqlCommandBuilder(dAdapt);
@@ -142,7 +142,7 @@ namespace CoffeeShop
             string dFrom = string.Format("{0}-{1}-{2}", dateFrom.Year, dateFrom.Month, dateFrom.Day);
             string dTo = string.Format("{0}-{1}-{2}", dateTo.Year, dateTo.Month, dateTo.Day);
 
-            string sql = "select o.id, o.customerName, s.name, o.takenDate, o.takenTime, o.tableNumber, o.totalPrice from [Order] o, Staff s where status = 'paid' and o.staffId = s.id and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
+            string sql = "select o.id, o.customerName, s.name, o.takenDate, o.takenTime, o.tableNumber, o.totalPrice from [Order] o, Staff s where status = 'paid' and o.staffId = s.id and o.takenDate >= '" + dFrom + "' and o.takenDate <= '" + dTo + "'";
             dAdapt = new SqlDataAdapter(sql, connStr);
             SqlCommandBuilder builder = new SqlCommandBuilder(dAdapt);
             try
@@ -166,7 +166,7 @@ namespace CoffeeShop
             string dFrom = string.Format("{0}-{1}-{2}", dateFrom.Year, dateFrom.Month, dateFrom.Day);
             string dTo = string.Format("{0}-{1}-{2}", dateTo.Year, dateTo.Month, dateTo.Day);
 
-            string sql = "select avg(o.totalPrice) as AverageBenefit from [Order] o where status = 'paid' and o.takenDate >= '" + dateFrom + "' and o.takenDate <= '" + dateTo + "'";
+            string sql = "select avg(o.totalPrice) as AverageBenefit from [Order] o where status = 'paid' and o.takenDate >= '" + dFrom + "' and o.takenDate <= '" + dTo + "'";
             dAdapt = new SqlDataAdapter(sql, connStr);
             SqlCommandBuilder builder = new SqlCommandBuilder(dAdapt);
             try
