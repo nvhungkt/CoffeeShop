@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.grbInfo = new System.Windows.Forms.GroupBox();
             this.txtConfirm = new System.Windows.Forms.TextBox();
@@ -76,8 +76,8 @@
             this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStaff.Location = new System.Drawing.Point(12, 47);
             this.dgvStaff.Name = "dgvStaff";
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvStaff.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.dgvStaff.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvStaff.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgvStaff.Size = new System.Drawing.Size(395, 453);
             this.dgvStaff.TabIndex = 0;
@@ -334,7 +334,7 @@
             this.btnDelete.Location = new System.Drawing.Point(237, 459);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 2;
+            this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -344,7 +344,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(122, 459);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.TabIndex = 22;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -354,7 +354,7 @@
             this.btnAdd.Location = new System.Drawing.Point(5, 459);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 0;
+            this.btnAdd.TabIndex = 21;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -401,6 +401,7 @@
             // 
             // frmStaff
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 512);
