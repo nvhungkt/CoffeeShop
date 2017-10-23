@@ -76,7 +76,7 @@ namespace CoffeeShop
             else
                 adaptMenu = new SqlDataAdapter("SELECT * FROM Product "
                     + "WHERE isActive=1 AND categoryID='" + curCategoryID + "'", conString);
-            SqlCommandBuilder invBuilder = new SqlCommandBuilder(adaptCategory);
+            SqlCommandBuilder invBuilder = new SqlCommandBuilder(adaptMenu);
 
             try
             {
@@ -129,10 +129,59 @@ namespace CoffeeShop
             return true;
         }
 
+        public bool ValidatePrice()
+        {
+            float price;
+            try
+            {
+                 price = float.Parse(txtPrice.Text);
+            }
+            catch (FormatException)
+            {
+                error.SetError(txtPrice, "Price invalid!");
+                return false;
+            }
+            if (price <= 0)
+            {
+                error.SetError(txtPrice, "Price must be a positive number!");
+                return false;
+            }
+            return true;
+        }
+
         private void dgvCategory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCategory.SelectedCells.Count > 0)
             {
+                //If click on "add", move this product to this category
+                if (!isWorkingWithCategory)
+                {
+                    int col = e.ColumnIndex;
+                    if (dgvCategory.Columns[col].Name == "add")
+                    {
+                        int cateRow = e.RowIndex;
+                        string cateID = dgvCategory.Rows[cateRow].Cells["id"].Value.ToString();
+                        
+                        //get product row
+                        int productRow = dgvMenu.SelectedCells[0].RowIndex;
+                        //get ID
+                        string curProductID = dgvMenu.Rows[productRow].Cells["id"].Value.ToString();
+                        DataRow[] product = menu.Tables["Product"].Select("id=" + curProductID);
+
+                        if (string.IsNullOrEmpty(cateID))
+                            product[0]["categoryID"] = DBNull.Value;
+                        else product[0]["categoryID"] = cateID;
+                        product[0]["lastModified"] = DateTime.Now;
+                        try
+                        {
+                            adaptMenu.Update(menu.Tables["Product"]);
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
                 //set data in form
                 int row = dgvCategory.SelectedCells[0].RowIndex;
                 txtName.Text = dgvCategory.Rows[row].Cells["name"].Value.ToString();
@@ -234,6 +283,40 @@ namespace CoffeeShop
                         MessageBox.Show(ex.Message);
                     }
                 }
+                else
+                {
+                    if (!ValidatePrice()) return;
+
+                    DataRow newProduct = menu.Tables["Product"].NewRow();
+                    newProduct["name"] = txtName.Text;
+                    newProduct["description"] = txtDescription.Text;
+                    newProduct["price"] = float.Parse(txtPrice.Text);
+                    //get category row
+                    int row = dgvCategory.SelectedCells[0].RowIndex;
+                    //check if this row is last row
+                    if (row == dgvCategory.RowCount - 1) newProduct["categoryID"] = DBNull.Value;
+                    //set categoryID
+                    else
+                        newProduct["categoryID"] = dgvCategory.Rows[row].Cells["id"].Value.ToString();
+                    newProduct["isActive"] = true;
+                    newProduct["lastModified"] = DBNull.Value;
+
+                    menu.Tables["Product"].Rows.Add(newProduct);
+
+                    try
+                    {
+                        adaptMenu.Update(menu.Tables["Product"]);
+                        //reload menu
+                        LoadMenu(newProduct["categoryID"] == DBNull.Value ? "" : newProduct["categoryID"].ToString());
+                        txtName.Clear();
+                        txtDescription.Clear();
+                        txtPrice.Clear();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
         }
 
@@ -257,6 +340,27 @@ namespace CoffeeShop
                 try
                 {
                     adaptCategory.Update(categories.Tables["Category"]);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                //get row
+                int row = dgvMenu.SelectedCells[0].RowIndex;
+                //get ID
+                string curProductID = dgvMenu.Rows[row].Cells["id"].Value.ToString();
+                DataRow[] product = menu.Tables["Product"].Select("id=" + curProductID);
+
+                product[0]["name"] = txtName.Text;
+                product[0]["description"] = txtDescription.Text;
+                product[0]["price"] = float.Parse(txtPrice.Text);
+                product[0]["lastModified"] = DateTime.Now;
+                try
+                {
+                    adaptMenu.Update(menu.Tables["Product"]);
                 }
                 catch (SqlException ex)
                 {
@@ -287,6 +391,30 @@ namespace CoffeeShop
                     LoadCategory();
                     txtName.Clear();
                     txtDescription.Clear();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                //get row
+                int row = dgvMenu.SelectedCells[0].RowIndex;
+                //get ID
+                string curProductID = dgvMenu.Rows[row].Cells["id"].Value.ToString();
+                DataRow[] product = menu.Tables["Product"].Select("id=" + curProductID);
+
+                product[0]["isActive"] = false;
+                string curCategoryID = product[0]["categoryID"].ToString();
+                try
+                {
+                    adaptMenu.Update(menu.Tables["Product"]);
+                    //reload menu
+                    LoadMenu(curCategoryID);
+                    txtName.Clear();
+                    txtDescription.Clear();
+                    txtPrice.Clear();
                 }
                 catch (SqlException ex)
                 {
