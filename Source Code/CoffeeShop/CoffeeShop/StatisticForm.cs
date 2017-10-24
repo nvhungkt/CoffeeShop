@@ -18,6 +18,8 @@ namespace CoffeeShop
         DataSet myDS = new DataSet();
         private readonly string connStr = ConfigurationManager.ConnectionStrings["SqlProviderPubs"].ConnectionString;
 
+        private bool orderShowing; //use for determine whether datagridview is showing Order details
+
         public void ShowPopularMenuItem()
         {
             myDS.Clear();
@@ -216,18 +218,21 @@ namespace CoffeeShop
 
         private void btnShowPopularMenuItem_Click(object sender, EventArgs e)
         {
+            orderShowing = false;
             ShowPopularMenuItem();
             ClearBenefit();
         }
 
         private void btnShowBenefit_Click(object sender, EventArgs e)
         {
+            orderShowing = true;
             ShowOrderBenefit();
             ShowAvarageBenefit();
         }
 
         private void btnShowTotalOrders_Click(object sender, EventArgs e)
         {
+            orderShowing = false;
             ShowTotalOrders();
             ClearBenefit();
         }
@@ -236,6 +241,31 @@ namespace CoffeeShop
         {
             if (dgvOrderStatistic.RowCount > 0) {
                 Reverse();
+            }
+        }
+
+        private void dgvOrderStatistic_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            myDS.Tables["OrderDetail"]?.Rows.Clear();
+            if (orderShowing)
+            {
+                int orderID = (int) myDS.Tables["Benefit"].Rows[e.RowIndex]["id"];
+
+                SqlDataAdapter da = new SqlDataAdapter("SELECT [no], p.name, d.price, d.quantity, d.price * d.quantity AS total FROM [Order] o, OrderDetail d, Product p WHERE p.id = d.productID AND o.id = d.orderID AND o.id = " + orderID, connStr);
+
+                da.Fill(myDS, "OrderDetail");
+
+                string msg = String.Format("{0,-5} {1,-70} {2,-10} {3,-10} {4,-10}\n", "No", "Name", "Price", "Quantity", "Total");
+                foreach (DataRow item in myDS.Tables["OrderDetail"].Rows)
+                {
+                    string padding = "";
+                    for (int i = 0; i < 50 - ((string)item["name"]).Length; i++)
+                    {
+                        padding += " ";
+                    }
+                    msg += String.Format("{0,-5} {1} {2,-10} {3,-10} {4,-10}\n", item["no"], item["name"] + padding, item["price"], item["quantity"], item["total"]);
+                }
+                MessageBox.Show(msg);
             }
         }
     }

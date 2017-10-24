@@ -91,11 +91,13 @@ namespace CoffeeShop
             int lastRow = ds.Tables["Order"].Rows.Count - 1;
             int orderID = int.Parse(ds.Tables["Order"].Rows[lastRow]["id"].ToString());
 
+            int no = 1;
             foreach (var entry in detail)
             {
                 DataRow newRow = ds.Tables["OrderDetail"].NewRow();
 
                 newRow["orderID"] = orderID;
+                newRow["no"] = no++;
                 newRow["productID"] = entry.Key["id"];
                 newRow["quantity"] = entry.Value;
                 newRow["price"] = entry.Key["price"];

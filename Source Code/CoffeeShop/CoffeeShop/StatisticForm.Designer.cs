@@ -49,9 +49,13 @@
             // 
             this.dgvOrderStatistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderStatistic.Location = new System.Drawing.Point(12, 72);
+            this.dgvOrderStatistic.MultiSelect = false;
             this.dgvOrderStatistic.Name = "dgvOrderStatistic";
+            this.dgvOrderStatistic.ReadOnly = true;
+            this.dgvOrderStatistic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrderStatistic.Size = new System.Drawing.Size(506, 299);
             this.dgvOrderStatistic.TabIndex = 0;
+            this.dgvOrderStatistic.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOrderStatistic_CellMouseDoubleClick);
             // 
             // dtpTo
             // 
