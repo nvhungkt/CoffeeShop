@@ -24,22 +24,37 @@ namespace CoffeeShop
             dgvOrderStatistic.DataSource = null;
             DateTime dateFrom = dtpFrom.Value;
             DateTime dateTo = dtpTo.Value;
+            if(dateFrom > dateTo)
+            {
+                return;
+            }
             string dFrom = string.Format("{0}-{1}-{2}",dateFrom.Year, dateFrom.Month, dateFrom.Day);
             string dTo = string.Format("{0}-{1}-{2}", dateTo.Year, dateTo.Month, dateTo.Day);
             string queryPopularEachItem = "select p.id, count(p.id) popular \n"
                            + "from Product p, OrderDetail o, [Order] ord \n"
                            + "where p.id = o.productID and o.orderID = ord.id and ord.takenDate >= '" + dFrom + "' and ord.takenDate <= '" + dTo + "' and ord.status = 'paid'\n"
                            + "group by p.id \n";
-            string sql = "select pr.name, pr.description, pr.categoryID, pr.price, f.popular \n"
+            string itemsInRange = "select pr.id, pr.name, pr.description, pr.categoryID, pr.price, f.popular \n"
                 + "from (" + queryPopularEachItem + ") f, Product pr \n"
-                + "where f.id = pr.id \n"
-                + "order by popular desc";
+                + "where f.id = pr.id ";
+            string sql = "SELECT por.name, por.description, por.categoryID, por.price, poo.popular \n"
+                + "FROM Product por \n"
+                + "full join \n"
+                + "(" + itemsInRange +") poo ON por.id = poo.id \n"
+                + "ORDER BY poo.popular DESC";
             dAdapt = new SqlDataAdapter(sql, connStr);
             SqlCommandBuilder builder = new SqlCommandBuilder(dAdapt);
             try
             {
                 dAdapt.Fill(myDS, "PopularItem");
                 AddNoColumnToDataTable("PopularItem");
+                foreach (DataRow row in myDS.Tables["PopularItem"].Rows)
+                {
+                    if (row["popular"].ToString().Equals(""))
+                    {
+                        row["popular"] = "0";
+                    }
+                }
                 dgvOrderStatistic.DataSource = myDS.Tables["PopularItem"];
             }
             catch (Exception se)
