@@ -33,6 +33,7 @@ namespace CoffeeShop
             Design.ApplyDGVColor(dgvCategory);
             Design.ApplyGroupColor(groupBox1);
             Design.ApplyGroupColor(groupBox2);
+            Design.ApplyGroupColor(groupContent);
             Design.ApplyButtonSuccess(btnAddNew);
             Design.ApplyButtonDanger(btnDeactive);
             Design.ApplyButtonInfo(btnUpdate);
@@ -62,9 +63,9 @@ namespace CoffeeShop
                 //set visible some columns
                 dgvCategory.RowHeadersVisible = false;
                 dgvCategory.Columns["id"].Visible = false;
-                dgvCategory.Columns["isActive"].Visible = false;
+                dgvCategory.Columns["description"].Visible = false;
                 dgvCategory.Columns["lastModified"].Visible = false;
-
+                
                 dgvCategory.Columns.Add("add", "add");
                 //dgvCategory.AllowUserToAddRows = false;
             }
@@ -97,10 +98,10 @@ namespace CoffeeShop
                 //set visible some columns
                 dgvMenu.RowHeadersVisible = false;
                 dgvMenu.Columns["id"].Visible = false;
-                dgvMenu.Columns["isActive"].Visible = false;
+                dgvMenu.Columns["description"].Visible = false;
                 dgvMenu.Columns["lastModified"].Visible = false;
                 dgvMenu.Columns["categoryID"].Visible = false;
-
+                
                 dgvMenu.AllowUserToAddRows = false;
             }
             catch (Exception ex)
@@ -167,26 +168,29 @@ namespace CoffeeShop
                     int col = e.ColumnIndex;
                     if (dgvCategory.Columns[col].Name == "add")
                     {
-                        int cateRow = e.RowIndex;
-                        string cateID = dgvCategory.Rows[cateRow].Cells["id"].Value.ToString();
+                        if (MessageBox.Show("Add to this category?", "Update", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        {
+                            int cateRow = e.RowIndex;
+                            string cateID = dgvCategory.Rows[cateRow].Cells["id"].Value.ToString();
                         
-                        //get product row
-                        int productRow = dgvMenu.SelectedCells[0].RowIndex;
-                        //get ID
-                        string curProductID = dgvMenu.Rows[productRow].Cells["id"].Value.ToString();
-                        DataRow[] product = menu.Tables["Product"].Select("id=" + curProductID);
+                            //get product row
+                            int productRow = dgvMenu.SelectedCells[0].RowIndex;
+                            //get ID
+                            string curProductID = dgvMenu.Rows[productRow].Cells["id"].Value.ToString();
+                            DataRow[] product = menu.Tables["Product"].Select("id=" + curProductID);
 
-                        if (string.IsNullOrEmpty(cateID))
-                            product[0]["categoryID"] = DBNull.Value;
-                        else product[0]["categoryID"] = cateID;
-                        product[0]["lastModified"] = DateTime.Now;
-                        try
-                        {
-                            adaptMenu.Update(menu.Tables["Product"]);
-                        }
-                        catch (SqlException ex)
-                        {
-                            MessageBox.Show(ex.Message);
+                            if (string.IsNullOrEmpty(cateID))
+                                product[0]["categoryID"] = DBNull.Value;
+                            else product[0]["categoryID"] = cateID;
+                            product[0]["lastModified"] = DateTime.Now;
+                            try
+                            {
+                                adaptMenu.Update(menu.Tables["Product"]);
+                            }
+                            catch (SqlException ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
                         }
                     }
                 }
