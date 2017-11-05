@@ -269,18 +269,28 @@ namespace CoffeeShop
             {
                 int row = dgvCategory.SelectedCells[0].RowIndex;
                 int selectedCate = (int)dgvCategory.Rows[row].Cells["id"].Value;
-                dgvMenu.DataSource = ds.Tables["Menu"].Select("categoryID = " + selectedCate).CopyToDataTable();
 
-                dgvMenu.Columns["id"].Visible = false;
-                dgvMenu.Columns["categoryID"].Visible = false;
-                dgvMenu.Columns["description"].Visible = false;
-                dgvMenu.Columns["isActive"].Visible = false;
-                dgvMenu.Columns["lastModified"].Visible = false;
-                dgvMenu.Columns["name"].Width = dgvCategory.Width - 3;
-                dgvMenu.RowHeadersVisible = false;
 
-                //Customize the Width of Menu
-                dgvMenu.Columns["name"].Width = dgvMenu.Width / 3 * 2 + 10;
+                try
+                {
+                    dgvMenu.DataSource = ds.Tables["Menu"].Select("categoryID = " + selectedCate).CopyToDataTable();
+
+                    dgvMenu.Columns["id"].Visible = false;
+                    dgvMenu.Columns["categoryID"].Visible = false;
+                    dgvMenu.Columns["description"].Visible = false;
+                    dgvMenu.Columns["isActive"].Visible = false;
+                    dgvMenu.Columns["lastModified"].Visible = false;
+                    dgvMenu.Columns["name"].Width = dgvCategory.Width - 3;
+                    dgvMenu.RowHeadersVisible = false;
+
+                    //Customize the Width of Menu
+                    dgvMenu.Columns["name"].Width = dgvMenu.Width / 3 * 2 + 10;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
         }
 
