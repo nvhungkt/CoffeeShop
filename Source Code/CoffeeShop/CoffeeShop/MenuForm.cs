@@ -28,6 +28,14 @@ namespace CoffeeShop
         {
             InitializeComponent();
             InitDataSet();
+            Design.ApplyFormColor(this);
+            Design.ApplyDGVColor(dgvMenu);
+            Design.ApplyDGVColor(dgvCategory);
+            Design.ApplyGroupColor(groupBox1);
+            Design.ApplyGroupColor(groupBox2);
+            Design.ApplyButtonSuccess(btnAddNew);
+            Design.ApplyButtonDanger(btnDeactive);
+            Design.ApplyButtonInfo(btnUpdate);
         }
 
         public void InitDataSet()
