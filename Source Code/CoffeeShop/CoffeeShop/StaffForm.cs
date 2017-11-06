@@ -17,7 +17,14 @@ namespace CoffeeShop
         private readonly string connStr = ConfigurationManager.ConnectionStrings["SqlProviderPubs"].ConnectionString;
         public frmStaff()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            Design.ApplyFormColor(this);
+            Design.ApplyDGVColor(dgvStaff);
+            Design.ApplyGroupColor(grbInfo);
+            Design.ApplyButtonSuccess(btnAdd);
+            Design.ApplyButtonDanger(btnDelete);
+            Design.ApplyButtonInfo(btnUpdate);
+            Design.ApplyButtonInfo(btnSearch);            
             InitRoleDataSet();
             LoadDataOnCombobox();
             InitStaffDataSet();
