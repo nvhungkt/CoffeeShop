@@ -102,9 +102,9 @@
             // 
             // btnReverse
             // 
-            this.btnReverse.Location = new System.Drawing.Point(539, 205);
+            this.btnReverse.Location = new System.Drawing.Point(539, 184);
             this.btnReverse.Name = "btnReverse";
-            this.btnReverse.Size = new System.Drawing.Size(183, 23);
+            this.btnReverse.Size = new System.Drawing.Size(183, 44);
             this.btnReverse.TabIndex = 5;
             this.btnReverse.Text = "Reverse";
             this.btnReverse.UseVisualStyleBackColor = true;
@@ -112,9 +112,9 @@
             // 
             // btnShowPopularMenuItem
             // 
-            this.btnShowPopularMenuItem.Location = new System.Drawing.Point(539, 254);
+            this.btnShowPopularMenuItem.Location = new System.Drawing.Point(539, 234);
             this.btnShowPopularMenuItem.Name = "btnShowPopularMenuItem";
-            this.btnShowPopularMenuItem.Size = new System.Drawing.Size(183, 23);
+            this.btnShowPopularMenuItem.Size = new System.Drawing.Size(183, 43);
             this.btnShowPopularMenuItem.TabIndex = 6;
             this.btnShowPopularMenuItem.Text = "Show popular menu item";
             this.btnShowPopularMenuItem.UseVisualStyleBackColor = true;
@@ -122,9 +122,9 @@
             // 
             // btnShowBenefit
             // 
-            this.btnShowBenefit.Location = new System.Drawing.Point(539, 303);
+            this.btnShowBenefit.Location = new System.Drawing.Point(539, 283);
             this.btnShowBenefit.Name = "btnShowBenefit";
-            this.btnShowBenefit.Size = new System.Drawing.Size(183, 23);
+            this.btnShowBenefit.Size = new System.Drawing.Size(183, 43);
             this.btnShowBenefit.TabIndex = 7;
             this.btnShowBenefit.Text = "Show benefits";
             this.btnShowBenefit.UseVisualStyleBackColor = true;
@@ -132,9 +132,9 @@
             // 
             // btnShowTotalOrders
             // 
-            this.btnShowTotalOrders.Location = new System.Drawing.Point(539, 348);
+            this.btnShowTotalOrders.Location = new System.Drawing.Point(539, 332);
             this.btnShowTotalOrders.Name = "btnShowTotalOrders";
-            this.btnShowTotalOrders.Size = new System.Drawing.Size(183, 23);
+            this.btnShowTotalOrders.Size = new System.Drawing.Size(183, 39);
             this.btnShowTotalOrders.TabIndex = 8;
             this.btnShowTotalOrders.Text = "Show total orders";
             this.btnShowTotalOrders.UseVisualStyleBackColor = true;

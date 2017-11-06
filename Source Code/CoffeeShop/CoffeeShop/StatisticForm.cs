@@ -205,6 +205,12 @@ namespace CoffeeShop
 
         private void StatisticForm_Load(object sender, EventArgs e)
         {
+            Design.ApplyFormColor(this);
+            Design.ApplyDGVColor(dgvOrderStatistic);
+            Design.ApplyButtonInfo(btnReverse);
+            Design.ApplyButtonSuccess(btnShowBenefit);
+            Design.ApplyButtonSuccess(btnShowPopularMenuItem);
+            Design.ApplyButtonSuccess(btnShowTotalOrders);
             dtpFrom.Format = DateTimePickerFormat.Custom;
             dtpFrom.CustomFormat = "dd/MM/yyyy";
             dtpTo.Format = DateTimePickerFormat.Custom;
