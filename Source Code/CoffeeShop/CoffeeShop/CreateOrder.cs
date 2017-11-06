@@ -163,6 +163,20 @@ namespace CoffeeShop
         {
             InitializeComponent();
 
+            Design.ApplyFormColor(this);
+            Design.ApplyDGVColor(dgvCategory);
+            Design.ApplyDGVColor(dgvMenu);
+            Design.ApplyDGVColor(dgvOrderDetail);
+            Design.ApplyGroupColor(groupBox1);
+            Design.ApplyGroupColor(groupBox2);
+            Design.ApplyGroupColor(groupBox3);
+            Design.ApplyGroupColor(groupBox4);
+            Design.ApplyGroupColor(groupBox5);
+            Design.ApplyButtonInfo(btnUpdate);
+            Design.ApplyButtonDanger(btnRemove);
+            Design.ApplyButtonSuccess(btnCheckOut);
+            Design.ApplyButtonInfo(btnNewOrder);
+
             this.staffName = staffName;
             lbStaffName.Text = staffName;
             this.staffID = staffID;
