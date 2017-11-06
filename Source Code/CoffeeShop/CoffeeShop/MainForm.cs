@@ -165,6 +165,18 @@ namespace CoffeeShop
             frm.ShowDialog();
         }
 
+        private void lightThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Design.isDarkTheme = false;
+            Design.SetTheme();
+        }
+
+        private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Design.isDarkTheme = true;
+            Design.SetTheme();
+        }
+
         private void itmStatistic_Click(object sender, EventArgs e)
         {
             if (!CloseCurrentTabs())

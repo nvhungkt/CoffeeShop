@@ -23,6 +23,10 @@ namespace CoffeeShop
         public LoginForm()
         {
             InitializeComponent();
+            Design.ApplyButton(btnExit);
+            Design.ApplyButtonSuccess(btnLogin);
+            Design.ApplyFormColor(this);
+            btnExit.BackColor = Color.FromArgb(170, 170, 170);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

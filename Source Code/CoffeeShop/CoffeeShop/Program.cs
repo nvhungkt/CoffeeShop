@@ -16,6 +16,8 @@ namespace CoffeeShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Design.isDarkTheme = false;
+            Design.SetTheme();
             Application.Run(new ProgressBarForm());
         }
     }

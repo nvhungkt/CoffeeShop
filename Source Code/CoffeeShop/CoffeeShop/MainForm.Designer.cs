@@ -32,6 +32,7 @@
             this.optSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.itmLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.itmLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.optSale = new System.Windows.Forms.ToolStripMenuItem();
             this.itmSale = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,8 @@
             this.itmStatistic = new System.Windows.Forms.ToolStripMenuItem();
             this.optAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.itmAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +67,7 @@
             this.optSystem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itmLogin,
             this.itmLogout,
+            this.changeThemeToolStripMenuItem,
             this.itmExit});
             this.optSystem.Name = "optSystem";
             this.optSystem.Size = new System.Drawing.Size(57, 20);
@@ -72,21 +76,30 @@
             // itmLogin
             // 
             this.itmLogin.Name = "itmLogin";
-            this.itmLogin.Size = new System.Drawing.Size(152, 22);
+            this.itmLogin.Size = new System.Drawing.Size(155, 22);
             this.itmLogin.Text = "Log in";
             this.itmLogin.Click += new System.EventHandler(this.itmLogin_Click);
             // 
             // itmLogout
             // 
             this.itmLogout.Name = "itmLogout";
-            this.itmLogout.Size = new System.Drawing.Size(152, 22);
+            this.itmLogout.Size = new System.Drawing.Size(155, 22);
             this.itmLogout.Text = "Log out";
             this.itmLogout.Click += new System.EventHandler(this.itmLogout_Click);
+            // 
+            // changeThemeToolStripMenuItem
+            // 
+            this.changeThemeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lightThemeToolStripMenuItem,
+            this.darkThemeToolStripMenuItem});
+            this.changeThemeToolStripMenuItem.Name = "changeThemeToolStripMenuItem";
+            this.changeThemeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.changeThemeToolStripMenuItem.Text = "Change Theme";
             // 
             // itmExit
             // 
             this.itmExit.Name = "itmExit";
-            this.itmExit.Size = new System.Drawing.Size(152, 22);
+            this.itmExit.Size = new System.Drawing.Size(155, 22);
             this.itmExit.Text = "Exit";
             this.itmExit.Click += new System.EventHandler(this.itmExit_Click);
             // 
@@ -154,9 +167,23 @@
             // itmAbout
             // 
             this.itmAbout.Name = "itmAbout";
-            this.itmAbout.Size = new System.Drawing.Size(152, 22);
+            this.itmAbout.Size = new System.Drawing.Size(122, 22);
             this.itmAbout.Text = "About us";
             this.itmAbout.Click += new System.EventHandler(this.itmAbout_Click);
+            // 
+            // lightThemeToolStripMenuItem
+            // 
+            this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
+            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lightThemeToolStripMenuItem.Text = "Light Theme";
+            this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.lightThemeToolStripMenuItem_Click);
+            // 
+            // darkThemeToolStripMenuItem
+            // 
+            this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.darkThemeToolStripMenuItem.Text = "Dark Theme";
+            this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -195,6 +222,9 @@
         private System.Windows.Forms.ToolStripMenuItem itmStatistic;
         private System.Windows.Forms.ToolStripMenuItem optAbout;
         private System.Windows.Forms.ToolStripMenuItem itmAbout;
+        private System.Windows.Forms.ToolStripMenuItem changeThemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lightThemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkThemeToolStripMenuItem;
     }
 }
 
