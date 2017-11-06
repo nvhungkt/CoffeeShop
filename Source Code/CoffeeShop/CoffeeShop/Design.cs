@@ -56,7 +56,7 @@ namespace CoffeeShop
         {
             dgv.BackgroundColor = dgvBackColor;
             dgv.BorderStyle = BorderStyle.None;
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
     }
 }

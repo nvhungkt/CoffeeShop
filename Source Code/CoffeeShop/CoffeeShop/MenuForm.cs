@@ -30,7 +30,9 @@ namespace CoffeeShop
             InitDataSet();
             Design.ApplyFormColor(this);
             Design.ApplyDGVColor(dgvMenu);
+            dgvMenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             Design.ApplyDGVColor(dgvCategory);
+            dgvCategory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             Design.ApplyGroupColor(groupBox1);
             Design.ApplyGroupColor(groupBox2);
             Design.ApplyGroupColor(groupContent);
@@ -41,13 +43,14 @@ namespace CoffeeShop
 
         public void InitDataSet()
         {
-            adaptCategory = new SqlDataAdapter("SELECT * FROM Category WHERE isActive=1", conString);
+            adaptCategory = new SqlDataAdapter("SELECT * FROM Category", conString);
             SqlCommandBuilder invBuilder = new SqlCommandBuilder(adaptCategory);
         }
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
             LoadCategory();
+            dgvCategory.Columns.Add("add", "add");
         }
 
         private void LoadCategory()
@@ -66,7 +69,6 @@ namespace CoffeeShop
                 dgvCategory.Columns["description"].Visible = false;
                 dgvCategory.Columns["lastModified"].Visible = false;
                 
-                dgvCategory.Columns.Add("add", "add");
                 //dgvCategory.AllowUserToAddRows = false;
             }
             catch (Exception ex)
@@ -81,10 +83,10 @@ namespace CoffeeShop
             //define category selected to prepare query string
             if (string.IsNullOrEmpty(curCategoryID))
                 adaptMenu = new SqlDataAdapter("SELECT * FROM Product "
-                    + "WHERE isActive=1 AND categoryID IS NULL", conString);
+                    + "WHERE categoryID IS NULL", conString);
             else
                 adaptMenu = new SqlDataAdapter("SELECT * FROM Product "
-                    + "WHERE isActive=1 AND categoryID='" + curCategoryID + "'", conString);
+                    + "WHERE categoryID='" + curCategoryID + "'", conString);
             SqlCommandBuilder invBuilder = new SqlCommandBuilder(adaptMenu);
 
             try
